@@ -3,7 +3,6 @@ from django.conf.urls import url, patterns
 from newswall.feeds import StoryFeed
 from newswall import views
 
-
 urlpatterns = patterns(
     '',
     url(r'^feed/$', StoryFeed()),
