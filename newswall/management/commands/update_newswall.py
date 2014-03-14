@@ -4,7 +4,6 @@ from django.utils import importlib
 
 from newswall.models import Source
 
-
 class Command(NoArgsCommand):
     help = 'Updates all active sources'
 
