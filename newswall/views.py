@@ -28,7 +28,7 @@ class NewswallMixin(object):
 
     @property
     def base_template(self):
-        if hastattr(request, '_feincms_page'):
+        if hasattr(request, '_feincms_page'):
             return request._feincms_page.template.path
         return 'base.html'
 
