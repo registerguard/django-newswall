@@ -23,7 +23,7 @@
     <article>
         <h2><a href="{{ story.get_absolute_url }}">{{ story }}</a></h2>
         <small>
-            <a href="{{ category.source.get_absolute_url }}">{{ story.source }}</a> |
+            <a href="{{ story.source.get_absolute_url }}">{{ story.source.name }}</a> |
             {{ story.timestamp|date:"g:i a, j F Y" }}
         </small>
         <p>{{ story.body|striptags|truncatewords:20|safe|urlize }}</p>
