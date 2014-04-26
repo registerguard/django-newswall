@@ -22,9 +22,11 @@ class Provider(ProviderBase):
         
         for entry in feed['entries']:
             if hasattr(entry, 'date_parsed'):
+                # set tm_isdst=1 on time.struct_time( ... ) here
                 timestamp = datetime.fromtimestamp(
                     time.mktime(entry.date_parsed))
             elif hasattr(entry, 'published_parsed'):
+                # set tm_isdst=1 on time.struct_time( ... ) here
                 timestamp = datetime.fromtimestamp(
                     time.mktime(entry.published_parsed))
             else:
