@@ -31,6 +31,7 @@ Required configuration keys::
     }
 
 """
+import pytz
 import tweepy
 
 from newswall.providers.base import ProviderBase
@@ -56,7 +57,9 @@ class Provider(ProviderBase):
                 self.config['user'],
                 entry.id,
             )
-
+            
+            entry.created_at = entry.created_at.replace(tzinfo=pytz.utc)
+            
             self.create_story(
                 link,
                 title=entry.text,

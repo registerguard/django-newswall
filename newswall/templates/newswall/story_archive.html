@@ -21,9 +21,8 @@
 {% block object_list %}
 {% for story in object_list %}
     <article>
-        <h2><a href="{{ story.get_absolute_url }}">{{ story }}</a></h2>
+        <h3><a href="{{ story.source.get_absolute_url }}">{{ story.source.name }}</a>: <a href="{{ story.get_absolute_url }}">{{ story }}</a></h3>
         <small>
-            <a href="{{ story.source.get_absolute_url }}">{{ story.source.name }}</a> |
             {{ story.timestamp|date:"g:i a, j F Y" }}
         </small>
         <p>{{ story.body|striptags|truncatewords:20|safe|urlize }}</p>
