@@ -11,9 +11,8 @@ Required configuration keys::
 """
 from datetime import datetime
 import feedparser
-import pytz
+from dateutil import parser
 import time
-from email.utils import parsedate
 
 from newswall.providers.base import ProviderBase
 
@@ -22,18 +21,11 @@ class Provider(ProviderBase):
         feed = feedparser.parse(self.config['source'])
         
         for entry in feed['entries']:
-            if hasattr(entry, 'date_parsed'):
-                timestamp = datetime.fromtimestamp(
-                    time.mktime(entry.date_parsed))
-            elif hasattr(entry, 'published_parsed'):
-#                 timestamp = datetime.fromtimestamp(
-#                     time.mktime(entry.published_parsed[:8] + (-1,)))
-                
-                timestamp = datetime(*(parsedate(entry.published)[:6]))
+            if hasattr(entry, 'published'):
+                # Most helpful! http://stackoverflow.com/questions/20867795/python-how-to-get-timezone-from-rss-feed
+                timestamp = parser.parse(entry.published)
             else:
                 timestamp = datetime.now()
-            
-#             timestamp = timestamp.replace(tzinfo=pytz.utc)
             
             self.create_story(
                 entry.link,
