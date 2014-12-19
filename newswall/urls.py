@@ -24,4 +24,7 @@ urlpatterns = patterns(
     url(r'^source/(?P<slug>[-\w]+)/$',
         views.SourceArchiveIndexView.as_view(),
         name='newswall_source_detail'),
+    url(r'^basketball/$',
+        views.BasketballArchiveIndexView.as_view(),
+        name='doApp_basketball'),
 )

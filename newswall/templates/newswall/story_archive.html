@@ -21,7 +21,7 @@
 	{% block object_list %}
 	{% for story in object_list %}
 		<article>
-			<h3><a href="{{ story.source.get_absolute_url }}">{{ story.source.name }}</a>: <a href="{{ story.get_absolute_url }}">{{ story }}</a></h3>
+			<h3><a href="{{ story.source.get_absolute_url }}">{{ story.source.name }}</a>: <a href="{{ story.get_absolute_url }}" target="_blank">{{ story|safe }}</a></h3>
 			<small>
 				{{ story.timestamp|date:"g:i a, j F Y" }}
 			</small>

@@ -102,3 +102,10 @@ class SourceArchiveIndexView(ArchiveIndexView):
         return super(SourceArchiveIndexView, self).get_context_data(
             source=self.source,
             **kwargs)
+
+
+class BasketballArchiveIndexView(ArchiveIndexView):
+    template_name_suffix='_doApp_basketball'
+
+    def get_queryset(self):
+        return Story.objects.active().filter(source__name__in=["Oregon Men's Basketball", "Oregon Men's Basketball Blog", "Sports Top Updates"]).select_related('source')

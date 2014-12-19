@@ -10,6 +10,7 @@ Required configuration keys::
     }
 """
 from datetime import datetime
+from django.utils import timezone
 import feedparser
 from dateutil import parser
 import time
@@ -24,6 +25,15 @@ class Provider(ProviderBase):
             if hasattr(entry, 'published'):
                 # Most helpful! http://stackoverflow.com/questions/20867795/python-how-to-get-timezone-from-rss-feed
                 timestamp = parser.parse(entry.published)
+                
+                # When Story is attached to Plan, can get pubDate in the future 
+                # and RSS feeds don't care for that ... 
+                #
+                # Using django timezone.now() instead of datetime.now() as 
+                # timezone.now () is timzone aware and datetime.now() isn't.
+                # http://stackoverflow.com/questions/10652819/django-1-4-cant-compare-offset-naive-and-offset-aware-datetimes
+                if timestamp > timezone.now():
+                    timestamp = timezone.now()
             else:
                 timestamp = datetime.now()
             
