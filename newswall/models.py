@@ -65,3 +65,11 @@ class Story(models.Model):
 
     def get_absolute_url(self):
         return self.object_url
+
+    def admin_thumbnail(self):
+        if self.image_url:
+            return u'<img src="%s" width="100" />' % self.image_url
+        else:
+            return ''
+    admin_thumbnail.short_description = u'Thumbnail'
+    admin_thumbnail.allow_tags = True

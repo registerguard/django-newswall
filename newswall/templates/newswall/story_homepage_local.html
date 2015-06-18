@@ -1,0 +1,96 @@
+{% with build="/v5/bulldog/dist/1.0.0/20140214/1" %}
+
+<!doctype html>
+
+<!--[if lt IE 7 ]><html class="no-js ie6" lang="en"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+
+<head>
+	
+	<meta charset="utf-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title></title>
+	<meta name="description" content="">
+	<meta property="og:description" content="">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<script src="http://static.registerguard.com{{ build }}/js/preflight.min.js"></script>
+	
+	<!--[if (lt IE 9) & (!IEMobile 7)]>
+		
+		<script src="http://static.registerguard.com{{ build }}/js/html5shiv-printshiv.min.js"></script>
+		
+		{% block respond_conditional %}
+			
+			<link href="http://static.registerguard.com/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+			<link href="{% block respond_gif %}http://projects.registerguard.com/respond.proxy.gif{% endblock respond_gif %}" id="respond-redirect" rel="respond-redirect">
+			
+		{% endblock respond_conditional %}
+		
+	<![endif]-->
+	
+	<link rel="stylesheet" href="http://static.registerguard.com{{ build }}/css/bulldog.min.css">
+	
+</head>
+
+<body>
+	
+	<div id="bd_content">
+	<!-- ##### BEGIN CONTENT AREA ##### -->
+		
+		{% for story in object_list %}
+		
+			<article>
+			
+				<div class="force">
+					
+					<header>
+						
+						<span class="stamp" style="float:right;">
+							
+							<time>{{ story.timestamp }}</time>
+							
+						</span>
+						
+						<hgroup>
+							
+							<h3 class="label">{{ story.source.name }}</h3>
+							
+							<h1 class="h5"><a href="{{ story.url }}" target="_blank">{{ story.title}}</a></h1>
+							
+						</hgroup>
+						
+					</header>
+					
+					<div class="fix">
+						
+						{% if story.image_url %}<a href="{{ story.url }}"><img class="imgr" src="{{ story.image_url }}" width="90" /></a>{% endif %}
+						
+						<p>{{ story.body|safe }}</p>
+					</div>
+				
+				</div>
+			
+			</article>
+			
+		{% endfor %}
+		
+	<!-- ##### END CONTENT AREA ##### -->
+	</div> <!-- /#bd_content -->
+	
+	<script src="http://static.registerguard.com{{ build }}/js/bulldog.min.js"></script>
+	
+	<!--[if (lt IE 9) & (!IEMobile 7)]>
+		<script src="http://static.registerguard.com{{ build }}/js/respond.min.js"></script>
+	<![endif]-->
+	
+</body>
+
+</html>
+
+{% endwith %}

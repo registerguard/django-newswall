@@ -14,7 +14,7 @@ admin.site.register(
 admin.site.register(
     Story,
     date_hierarchy='timestamp',
-    list_display=('title', 'source', 'is_active', 'timestamp'),
+    list_display=('title', 'admin_thumbnail', 'source', 'is_active', 'timestamp'),
     list_editable=('is_active',),
     list_filter=('source', 'is_active'),
     search_fields=('object_url', 'title', 'author', 'body'),

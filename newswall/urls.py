@@ -30,4 +30,7 @@ urlpatterns = patterns(
     url(r'^basketball/$',
         views.BasketballArchiveIndexView.as_view(),
         name='doApp_basketball'),
+    url(r'^latest/$',
+        views.LatestLocalIndexView.as_view(),
+        name='homepage_local'),
 )

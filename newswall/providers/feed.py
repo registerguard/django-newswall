@@ -37,9 +37,15 @@ class Provider(ProviderBase):
             else:
                 timestamp = datetime.now()
             
+            if hasattr(entry, 'media_content'):
+                image_url = entry.media_content[0]['url']
+            else:
+                image_url = ''
+            
             self.create_story(
                 entry.link,
                 title=entry.title,
                 body=entry.description,
                 timestamp=timestamp,
+                image_url=image_url,
             )
