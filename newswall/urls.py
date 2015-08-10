@@ -33,4 +33,7 @@ urlpatterns = patterns(
     url(r'^latest/$',
         views.LatestLocalIndexView.as_view(),
         name='homepage_local'),
+    url(r'^oregon/$',
+        views.LatestOregonIndexView.as_view(),
+        name='oregon')
 )

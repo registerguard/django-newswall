@@ -116,3 +116,10 @@ class LatestLocalIndexView(ArchiveIndexView):
 
     def get_queryset(self):
         return Story.objects.active().filter(source__name__in=["Local Updates", "Track & Field", "Sports Top Updates"]).select_related('source')
+
+
+class LatestOregonIndexView(ArchiveIndexView):
+    template_name_suffix='_homepage_oregon'
+
+    def get_queryset(self):
+        return Story.objects.active().filter(source__name="Statewide AP")
