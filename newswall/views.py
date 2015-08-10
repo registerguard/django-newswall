@@ -115,4 +115,4 @@ class LatestLocalIndexView(ArchiveIndexView):
     template_name_suffix='_homepage_local'
 
     def get_queryset(self):
-        return Story.objects.active().filter(source__name__in=["Local Updates", "Track & Field",]).select_related('source')
+        return Story.objects.active().filter(source__name__in=["Local Updates", "Track & Field", "Sports Top Updates"]).select_related('source')
