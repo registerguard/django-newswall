@@ -1,50 +1,22 @@
-{% with build="/v5/bulldog/dist/1.0.0/20140214/1" %}
+{% extends 'dox/bulldog.html' %}
+{% load get_url_content %}
 
-<!doctype html>
+{% block head_title %}Live stream{% endblock %}
 
-<!--[if lt IE 7 ]><html class="no-js ie6" lang="en"><![endif]-->
-<!--[if IE 7 ]><html class="no-js ie7" lang="en"><![endif]-->
-<!--[if IE 8 ]><html class="no-js ie8" lang="en"><![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+{% block head_extra %}
+{{ block.super }}
+<link rel="stylesheet" href="http://blogs.registerguard.com/uo-sojc/wp-content/themes/octavo/style.css">
+{% endblock %}
 
-<head>
-	
-	<meta charset="utf-8">
-	
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	
-	<title></title>
-	<meta name="description" content="">
-	<meta property="og:description" content="">
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-	<script src="http://static.registerguard.com{{ build }}/js/preflight.min.js"></script>
-	
-	<!--[if (lt IE 9) & (!IEMobile 7)]>
-		
-		<script src="http://static.registerguard.com{{ build }}/js/html5shiv-printshiv.min.js"></script>
-		
-		{% block respond_conditional %}
-			
-			<link href="http://static.registerguard.com/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
-			<link href="{% block respond_gif %}http://projects.registerguard.com/respond.proxy.gif{% endblock respond_gif %}" id="respond-redirect" rel="respond-redirect">
-			
-		{% endblock respond_conditional %}
-		
-	<![endif]-->
-	
-	<link rel="stylesheet" href="http://static.registerguard.com{{ build }}/css/bulldog.min.css">
-	
-</head>
+{% block content %}
+<div class="w_row">
 
-<body>
-	
-	<div id="bd_content">
-	<!-- ##### BEGIN CONTENT AREA ##### -->
-		
-		{% for story in object_list %}
-		
+	<div class="w_col w_B300 w_C640 w_D980 Bla Cla Dla">
+
+		<div class="wrap give">
+
+			{% for story in object_list %}
+
 			<article>
 			
 				<div class="force">
@@ -77,20 +49,47 @@
 				</div>
 			
 			</article>
+				
+			{% endfor %}
+				
+			</div> <!-- /.wrap -->
 			
-		{% endfor %}
+		</div> <!-- /.w_col-->
 		
-	<!-- ##### END CONTENT AREA ##### -->
-	</div> <!-- /#bd_content -->
-	
-	<script src="http://static.registerguard.com{{ build }}/js/bulldog.min.js"></script>
-	
-	<!--[if (lt IE 9) & (!IEMobile 7)]>
-		<script src="http://static.registerguard.com{{ build }}/js/respond.min.js"></script>
-	<![endif]-->
-	
-</body>
+		<div class="w_col w_B300 Blb Clb Dlb">
+			
+			<div class="wrap">
+				
+				<!-- //////////////////// Medium Rectangle 1 \\\\\\\\\\\\\\\\\\\\ -->
+				<div class="advert"><div id="medium-rectangle-1"><script>_ox.showAdUnit('537200278');</script></div></div>
+				<!-- \\\\\\\\\\\\\\\\\\\\ Medium Rectangle 1 //////////////////// -->
+				
+				<hr>
+				
+				<!-- //////////////////// ROS Adicio Widget \\\\\\\\\\\\\\\\\\\\ -->
+				<div class="advert"><div id="ros-adicio-widget"><script>_ox.showAdUnit('278420');</script></div></div>
+				<!-- \\\\\\\\\\\\\\\\\\\\ ROS Adicio Widget //////////////////// -->
+				
+				<hr>
+				
+				<!-- //////////////////// Medium Rectangle 2 \\\\\\\\\\\\\\\\\\\\ -->
+				<div class="advert"><div id="medium-rectangle-2"><script>_ox.showAdUnit('537200279');</script></div></div>
+				<!-- \\\\\\\\\\\\\\\\\\\\ Medium Rectangle 2 //////////////////// -->
+				
+				<hr>
+				
+				{% geturl "http://go.registerguard.com/entertainment/go_widget2/4/" 30 %}
+				
+				<hr>
+				
+				<!-- //////////////////// ROS Medium Rectangle 3 \\\\\\\\\\\\\\\\\\\\ -->
+				<div class="advert"><div id="ros-medium-rectangle-3"><script>_ox.showAdUnit('537200305');</script></div></div>
+				<!-- \\\\\\\\\\\\\\\\\\\\ ROS Medium Rectangle 3 //////////////////// -->
+				
+			</div> <!-- /.wrap -->
+			
+		</div> <!-- /.w_col-->
+		
+	</div> <!-- /.w_row -->
 
-</html>
-
-{% endwith %}
+{% endblock content %}
